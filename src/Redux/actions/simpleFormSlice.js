@@ -4,8 +4,8 @@ const initialState = {
   forms: {
     form1: { name: "", email: "" },
     form2: { username: "", password: "", confirmPassword: "" },
-    loginForm : {email : "", password : ""},
-    signupForm : {fullname : "", username : "" , email : "", password : "", confirmPassword : ""}
+    loginForm : { email : "", password : "" },
+    signupForm : { fullname : "", username : "" , email : "", password : "", confirmPassword : "" }
   },
 };
 
@@ -27,38 +27,28 @@ export const simpleFormSlice = createSlice({
   reducers: {
     updateForm: (state, action) => {
       const { formId, field, value } = action.payload;
-      state.forms[formId][field] = value;
-    },
-    resetForm: (state, action) => {
-      const { formId } = action.payload;
-      if (formId === "form1") {
-        state.forms[formId] = {name : '', email : ""}
-      } else if (formId === "form2") {
-        state.forms[formId] = {username: "", password: "", confirmPassword: ""}
-      } else if (formId === "loginForm") {
-        state.forms[formId] = {email : "", password : ""}
-      } else if (formId === "signupForm") {
-        state.forms[formId] = {fullname : "", username : "" , email : "", password : "", confirmPassword : ""}
-      }
+      state.forms[formId] = {
+        ...state.forms[formId],
+        [field]: value
+      };
     },
   },
   extraReducers: (builder) => {
     builder.addCase(submitForm.fulfilled, (state, action) => {
       const { formId } = action.payload;
       if (formId === "form1") {
-        state.forms[formId] = {name : '', email : ""}
-      }   else if (formId === "form2") {
-        state.forms[formId] = {username: "", password: "", confirmPassword: ""}
+        state.forms[formId] = { name: "", email: "" };
+      } else if (formId === "form2") {
+        state.forms[formId] = { username: "", password: "", confirmPassword: "" };
       } else if (formId === "loginForm") {
-        state.forms[formId] = {email : "", password : ""}
+        state.forms[formId] = { email: "", password: "" };
       } else if (formId === "signupForm") {
-        state.forms[formId] = {fullname : "", username : "" , email : "", password : "", confirmPassword : ""}
+        state.forms[formId] = { fullname: "", username: "", email: "", password: "", confirmPassword: "" };
       }
     });
   },
 });
 
-export const { updateForm, resetForm } = simpleFormSlice.actions;
+export const { updateForm } = simpleFormSlice.actions;
 
 export default simpleFormSlice.reducer;
-
