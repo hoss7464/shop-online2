@@ -1,6 +1,6 @@
 import React from 'react';
 
-const practice = () => {
+const index = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const practice = () => {
     );
 };
 
-export default practice;
+export default index;
