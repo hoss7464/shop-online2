@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import {
   increment,
   dicrement,
@@ -12,6 +13,7 @@ import {
   hoverDisableToggle,
 } from "../../Redux/actions/toggleSlice";
 import { updateForm, submitForm } from "../../Redux/actions/simpleFormSlice";
+
 //------------------------------------------------------------------------------
 
 const Counter = () => {
@@ -22,12 +24,15 @@ const Counter = () => {
   const count2 = useSelector(
     (state) => state.counter.counters["counter2"] || 0
   );
+
   //-----------------------------------------------------------------------------
   //Selectors for toggle click :
   const toggles = useSelector((state) => state.toggle.toggles);
   //-----------------------------------------------------------------------------
   //Selectors for forms :
   const forms = useSelector((state) => state.simpleForm.forms);
+
+
   //-----------------------------------------------------------------------------
   const dispatch = useDispatch();
   //-----------------------------------------------------------------------------
@@ -52,6 +57,8 @@ const Counter = () => {
     dispatch(submitForm({ formId, formData: forms[formId] }));
   };
   //-------------------------------------------------------------------------------
+  
+
 
   return (
     <>
@@ -284,6 +291,7 @@ const Counter = () => {
         </div>
         <button type="submit">Submit</button>
       </form>
+
     </>
   );
 };

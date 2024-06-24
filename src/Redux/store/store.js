@@ -9,6 +9,6 @@ export const store = configureStore({
     counter: counterReducer,
     toggle: toggleReducer,
     simpleForm: simpleFormReducer,
-    filter : filterReducer
+    filterProduct : filterReducer
   },
 });
